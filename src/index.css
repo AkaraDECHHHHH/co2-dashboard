@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+
+body {
+  @apply bg-ink-950 font-sans text-slate-300 antialiased;
+  background-image: radial-gradient(1100px 480px at 78% -8%, rgba(220, 38, 38, 0.14), transparent 62%);
+  background-attachment: fixed;
+}
+
+@layer components {
+  .panel {
+    @apply rounded-md border border-red-900/40 bg-ink-900/85 shadow-glow;
+  }
+  .panel-title {
+    @apply font-display text-lg font-semibold tracking-wide text-slate-100;
+  }
+  .num {
+    @apply font-display tabular-nums;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-1.5 rounded border border-slate-700 bg-ink-800/70 px-2.5 py-1.5 text-sm text-slate-300 transition-colors hover:border-red-700/70 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember-500;
+  }
+  .seg {
+    @apply inline-flex overflow-hidden rounded border border-slate-700 bg-ink-950/60;
+  }
+  .seg > button {
+    @apply px-3 py-1.5 text-sm text-slate-400 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ember-500;
+  }
+  .seg > button[aria-pressed='true'] {
+    @apply bg-crisis-600 text-white;
+  }
+}
+
+/* Emergency-tape rule under the title */
+.hazard {
+  background: repeating-linear-gradient(-45deg, #dc2626 0 9px, #090d16 9px 18px);
+}
+
+/* Map */
+.country {
+  vector-effect: non-scaling-stroke;
+  stroke: #0b1220;
+  stroke-width: 0.6;
+  transition: fill 0.18s linear;
+}
+.country[data-has='1'] { cursor: pointer; }
+.country[data-has='1']:hover { stroke: #f8fafc; stroke-width: 1.4; }
+.country[data-selected='1'] { stroke: #fde68a; stroke-width: 1.8; }
+
+/* Year scrubber: transparent range input laid over the emissions silhouette */
+.scrubber {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  width: 100%;
+  height: 56px;
+  margin: 0;
+  cursor: ew-resize;
+}
+.scrubber::-webkit-slider-runnable-track { background: transparent; height: 56px; }
+.scrubber::-moz-range-track { background: transparent; height: 56px; }
+.scrubber::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 4px;
+  height: 56px;
+  border-radius: 0;
+  background: #fff;
+  box-shadow: 0 0 14px 2px rgba(239, 68, 68, 0.85);
+}
+.scrubber::-moz-range-thumb {
+  width: 4px;
+  height: 56px;
+  border: 0;
+  border-radius: 0;
+  background: #fff;
+  box-shadow: 0 0 14px 2px rgba(239, 68, 68, 0.85);
+}
+.scrubber:focus-visible { outline: 2px solid #f97316; outline-offset: 2px; }
+
+.thin-scroll { scrollbar-width: thin; scrollbar-color: #7f1d1d #0f172a; }
+.thin-scroll::-webkit-scrollbar { width: 8px; }
+.thin-scroll::-webkit-scrollbar-track { background: #0f172a; }
+.thin-scroll::-webkit-scrollbar-thumb { background: #7f1d1d; border-radius: 4px; }
+
+/* Recharts: keep axes quiet */
+.recharts-text { fill: #94a3b8; font-size: 11px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
