@@ -16,19 +16,19 @@ export default function ControlBar({ store, year, setYear, playing, onTogglePlay
             {year}
           </div>
           <div className="flex items-center gap-2">
-            <button type="button" className="btn-ghost !h-10 !w-10 !p-0" onClick={onTogglePlay} aria-label={playing ? 'Pause timeline' : atEnd ? 'Replay timeline' : 'Play timeline'}>
+            <button type="button" className="btn-ghost !h-10 !w-10 !p-0" onClick={onTogglePlay} aria-label={playing ? 'หยุดไทม์ไลน์' : atEnd ? 'เล่นใหม่' : 'เล่นไทม์ไลน์'}>
               {playing ? <Pause size={18} /> : atEnd ? <RotateCcw size={18} /> : <Play size={18} />}
             </button>
             <YearInput min={yearMin} max={yearMax} year={year} onChange={setYear} />
           </div>
           <YearScrubber min={yearMin} max={yearMax} year={year} onChange={setYear} worldSeries={worldSeries} />
-          <Segmented options={PLAY_SPEEDS} value={speed} onChange={setSpeed} label="Playback speed" />
+          <Segmented options={PLAY_SPEEDS} value={speed} onChange={setSpeed} label="ความเร็วการเล่น" />
         </div>
 
         {/* Metric */}
         <div className="flex flex-wrap items-center gap-2">
-          <Segmented options={METRICS} value={metric} onChange={setMetric} label="Map metric" />
-          {metric === 'fuel' && <Segmented options={FUELS} value={fuel} onChange={setFuel} label="Fuel source" />}
+          <Segmented options={METRICS} value={metric} onChange={setMetric} label="ตัวชี้วัดแผนที่" />
+          {metric === 'fuel' && <Segmented options={FUELS} value={fuel} onChange={setFuel} label="แหล่งพลังงาน" />}
         </div>
       </div>
     </div>

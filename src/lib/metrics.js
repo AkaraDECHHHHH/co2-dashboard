@@ -11,9 +11,9 @@ export const COMPONENTS = [
 export const FUELS = COMPONENTS.slice(0, 3);
 
 export const METRICS = [
-  { id: 'co2', label: 'Total CO₂', col: 'co2', unit: 'million tonnes (Mt)' },
-  { id: 'per_capita', label: 'Per capita', col: 'co2_per_capita', unit: 'tonnes per person' },
-  { id: 'fuel', label: 'By fuel source', col: null, unit: 'million tonnes (Mt)' },
+  { id: 'co2', label: 'CO₂ ทั้งหมด', col: 'co2', unit: 'ล้านตัน (Mt)' },
+  { id: 'per_capita', label: 'ต่อคน', col: 'co2_per_capita', unit: 'ตันต่อคน' },
+  { id: 'fuel', label: 'ตามแหล่งเชื้อเพลิง', col: null, unit: 'ล้านตัน (Mt)' },
 ];
 
 export function describeMetric(metricId, fuelId) {
@@ -27,7 +27,7 @@ export function describeMetric(metricId, fuelId) {
 
 export const DEFAULT_YEAR = 2022;
 export const PLAY_SPEEDS = [
-  { id: 'slow', label: 'Slow', yps: 5 },
-  { id: 'normal', label: 'Normal', yps: 12 },
-  { id: 'fast', label: 'Fast', yps: 30 },
+  { id: 'slow', label: 'ช้า', yps: 5 },
+  { id: 'normal', label: 'ปกติ', yps: 12 },
+  { id: 'fast', label: 'เร็ว', yps: 30 },
 ];

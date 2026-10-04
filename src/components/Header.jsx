@@ -10,7 +10,7 @@ export default function Header({ meta }) {
           </span>
           <div>
             <h1 className="font-display text-2xl font-bold leading-none tracking-wide text-slate-50 sm:text-3xl">
-              GLOBAL CO2 &amp; GREENHOUSE GAS EMISSIONS TRACKER
+              ตัวติดตามการปล่อย CO₂ และก๊าซเรือนกระจกทั่วโลก
             </h1>
             <p className="mt-1 text-xs text-slate-500">
               Country-level emissions, {meta.yearMin}–{meta.yearMax} · Our World in Data / Global Carbon Project
@@ -22,7 +22,7 @@ export default function Header({ meta }) {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-crisis-500 opacity-70" />
             <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-crisis-500" />
           </span>
-          <span className="font-display text-base font-semibold tracking-wider text-red-300">CLIMATE ALERT</span>
+          <span className="font-display text-base font-semibold tracking-wider text-red-300">เตือนภูมิอากาศ</span>
         </div>
       </div>
       <div className="hazard h-1.5" aria-hidden />

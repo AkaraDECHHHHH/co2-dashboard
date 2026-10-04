@@ -20,7 +20,7 @@ export default function App() {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center gap-3 text-slate-400" role="status">
         <Loader2 className="animate-spin text-crisis-500" size={32} />
-        <p className="font-display text-xl tracking-wide">Loading emissions record…</p>
+        <p className="font-display text-xl tracking-wide">กำลังโหลดข้อมูลการปล่อยก๊าซ…</p>
       </div>
     );
   }
@@ -28,11 +28,11 @@ export default function App() {
     return (
       <div className="mx-auto flex min-h-screen max-w-xl flex-col items-start justify-center gap-3 px-6">
         <TriangleAlert className="text-crisis-500" size={32} />
-        <h1 className="font-display text-3xl font-bold text-slate-100">Emissions data not found</h1>
+        <h1 className="font-display text-3xl font-bold text-slate-100">ไม่พบข้อมูลการปล่อยก๊าซ</h1>
         <p className="text-slate-400">
-          The dashboard reads <code className="rounded bg-ink-800 px-1.5 py-0.5 text-ember-400">public/data/emissions.json</code>, which is generated from your CSV.
-          Place <code className="rounded bg-ink-800 px-1.5 py-0.5">owid-co2-data.csv</code> in <code className="rounded bg-ink-800 px-1.5 py-0.5">./data</code>, run{' '}
-          <code className="rounded bg-ink-800 px-1.5 py-0.5 text-ember-400">npm run prep</code>, then reload.
+          แดชบอร์ดอ่านข้อมูลจาก <code className="rounded bg-ink-800 px-1.5 py-0.5 text-ember-400">public/data/emissions.json</code> ซึ่งสร้างจากไฟล์ CSV ของคุณ
+          วาง <code className="rounded bg-ink-800 px-1.5 py-0.5">owid-co2-data.csv</code> ใน <code className="rounded bg-ink-800 px-1.5 py-0.5">./data</code> แล้วรัน{' '}
+          <code className="rounded bg-ink-800 px-1.5 py-0.5 text-ember-400">npm run prep</code> จากนั้นโหลดใหม่
         </p>
         <p className="text-xs text-slate-600">{String(error?.message ?? error)}</p>
       </div>
@@ -43,8 +43,8 @@ export default function App() {
 
 const GLOBAL_TRENDS = [
   { id: 'co2', label: 'CO₂', col: 'co2', y: axisMt, v: fmtMt },
-  { id: 'ghg', label: 'All greenhouse gases', col: 'total_ghg', y: axisMt, v: (v) => `${fmtMt(v)} CO₂e` },
-  { id: 'pc', label: 'Per capita', col: 'co2_per_capita', y: (v) => `${v.toFixed(1)} t`, v: fmtPerCapita },
+  { id: 'ghg', label: 'ก๊าซเรือนกระจกทั้งหมด', col: 'total_ghg', y: axisMt, v: (v) => `${fmtMt(v)} CO₂e` },
+  { id: 'pc', label: 'ต่อคน', col: 'co2_per_capita', y: (v) => `${v.toFixed(1)} t`, v: fmtPerCapita },
 ];
 
 function Dashboard({ store }) {
@@ -106,21 +106,21 @@ function Dashboard({ store }) {
         </section>
 
         <section className="grid gap-4 lg:grid-cols-12">
-          <Panel className="lg:col-span-5" title="Where the carbon comes from" subtitle={`World CO₂ by source, ${lazyYear}`}>
+          <Panel className="lg:col-span-5" title="แหล่งที่มาของคาร์บอน" subtitle={`CO₂ ทั่วโลกตามแหล่งที่มา, ${lazyYear}`}>
             <BreakdownChart store={store} entity={store.world} year={lazyYear} onPick={pickYear} height={250} />
           </Panel>
           <Panel
             className="lg:col-span-7"
-            title="Global emissions through time"
-            subtitle={`${yearMin}–${yearMax} · click the chart to move the timeline`}
-            actions={<Segmented options={availableTrends} value={gt.id} onChange={setGlobalTrend} label="Global indicator" />}
+            title="การปล่อยก๊าซทั่วโลกตลอดเวลา"
+            subtitle={`${yearMin}–${yearMax} · คลิกกราฟเพื่อเลื่อนไทม์ไลน์`}
+            actions={<Segmented options={availableTrends} value={gt.id} onChange={setGlobalTrend} label="ตัวชี้วัดทั่วโลก" />}
           >
             <TrendChart data={gtSeries} year={lazyYear} onPick={pickYear} yFormat={gt.y} valueFormat={gt.v} name={gt.label} gradientId={`global-${gt.id}`} height={290} />
           </Panel>
         </section>
 
         <footer className="pb-6 pt-2 text-xs text-slate-600">
-          Source: Our World in Data CO₂ and greenhouse gas emissions dataset (Global Carbon Project, Jones et al., PRIMAP-hist). Territorial emissions; countries without a figure for the chosen year appear dark grey.
+          แหล่งข้อมูล: Our World in Data CO₂ and greenhouse gas emissions dataset (Global Carbon Project, Jones et al., PRIMAP-hist). การปล่อยก๊าซตามอาณาเขต; ประเทศที่ไม่มีข้อมูลในปีที่เลือกจะแสดงเป็นสีเทาเข้ม
         </footer>
       </main>
 

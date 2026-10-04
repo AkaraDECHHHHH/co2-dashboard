@@ -13,10 +13,10 @@ export default function KpiStrip({ store, year }) {
 
   return (
     <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-      <Stat label={`World CO₂, ${year}`} value={fmtMt(total)} sub={yoy == null ? 'Year-on-year change unavailable' : `${fmtPct(yoy)} vs ${year - 1}`} tone={yoy > 0 ? 'bad' : 'default'} hint={cb.co2?.description} />
-      <Stat label="Per person worldwide" value={fmtPerCapita(store.get(w, 'co2_per_capita', year))} sub="tonnes of CO₂ per year" hint={cb.co2_per_capita?.description} />
-      <Stat label="Largest emitter" value={topEntity?.name ?? '—'} sub={top ? `${fmtMt(top.value)} · ${fmtShare(store.get(topEntity, 'share_global_co2', year))} of world` : 'No data'} />
-      <Stat label="Emitted since the start of the record" value={fmtMt(cumulative)} sub={`cumulative CO₂ through ${year}`} hint={cb.cumulative_co2?.description} />
+      <Stat label={`CO₂ ทั่วโลก, ${year}`} value={fmtMt(total)} sub={yoy == null ? 'ไม่มีข้อมูลการเปลี่ยนแปลงรายปี' : `${fmtPct(yoy)} เทียบกับ ${year - 1}`} tone={yoy > 0 ? 'bad' : 'default'} hint={cb.co2?.description} />
+      <Stat label="ต่อคนทั่วโลก" value={fmtPerCapita(store.get(w, 'co2_per_capita', year))} sub="ตัน CO₂ ต่อปี" hint={cb.co2_per_capita?.description} />
+      <Stat label="ผู้ปล่อยก๊าซรายใหญ่ที่สุด" value={topEntity?.name ?? '—'} sub={top ? `${fmtMt(top.value)} · ${fmtShare(store.get(topEntity, 'share_global_co2', year))} ของโลก` : 'ไม่มีข้อมูล'} />
+      <Stat label="ปล่อยมาตั้งแต่เริ่มบันทึก" value={fmtMt(cumulative)} sub={`CO₂สะสมถึง ${year}`} hint={cb.cumulative_co2?.description} />
     </div>
   );
 }

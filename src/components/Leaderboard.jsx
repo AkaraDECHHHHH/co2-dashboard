@@ -36,23 +36,23 @@ export default function Leaderboard({ store, col, year, metricLabel, selectedIso
       <header className="space-y-3 border-b border-red-900/30 px-4 py-3">
         <div className="flex items-start justify-between gap-2">
           <div>
-            <h2 className="panel-title">Leading emitters</h2>
-            <p className="text-xs text-slate-500">{metricLabel} in {year} · {ranking.length} countries reporting</p>
+            <h2 className="panel-title">ผู้ปล่อยก๊าซชั้นนำ</h2>
+            <p className="text-xs text-slate-500">{metricLabel} ใน {year} · {ranking.length} ประเทศที่รายงาน</p>
           </div>
         </div>
-        <Segmented options={TOPS} value={top} onChange={setTop} label="List length" />
+        <Segmented options={TOPS} value={top} onChange={setTop} label="ความยาวรายการ" />
         <div className="relative">
           <Search size={15} className="pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-500" />
           <input
             type="search"
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Find a country"
-            aria-label="Find a country"
+            placeholder="ค้นหาประเทศ"
+            aria-label="ค้นหาประเทศ"
             className="w-full rounded border border-slate-700 bg-ink-950/70 py-1.5 pl-8 pr-8 text-sm text-slate-200 placeholder:text-slate-600 focus:border-ember-500 focus:outline-none"
           />
           {q && (
-            <button type="button" onClick={() => setQ('')} aria-label="Clear search" className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white">
+            <button type="button" onClick={() => setQ('')} aria-label="ล้างการค้นหา" className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white">
               <X size={14} />
             </button>
           )}
@@ -60,7 +60,7 @@ export default function Leaderboard({ store, col, year, metricLabel, selectedIso
       </header>
 
       <ol className="thin-scroll min-h-0 flex-1 overflow-y-auto px-2 py-2">
-        {rows.length === 0 && <li className="px-3 py-8 text-center text-sm text-slate-500">No country matches “{q}”.</li>}
+        {rows.length === 0 && <li className="px-3 py-8 text-center text-sm text-slate-500">ไม่มีประเทศที่ตรงกับ "{q}"</li>}
         {rows.map((r) => {
           const e = store.byIso.get(r.iso);
           const has = r.value != null;
@@ -79,7 +79,7 @@ export default function Leaderboard({ store, col, year, metricLabel, selectedIso
                   <span className="num w-7 text-right text-base text-slate-500">{r.rank ?? '–'}</span>
                   <Flag url={store.flagUrl(e)} name={e.name} />
                   <span className="min-w-0 flex-1 truncate text-sm text-slate-200">{e.name}</span>
-                  <span className="num text-base text-slate-100">{has ? fmtValue(col, r.value) : 'No data'}</span>
+                  <span className="num text-base text-slate-100">{has ? fmtValue(col, r.value) : 'ไม่มีข้อมูล'}</span>
                 </div>
                 <div className="ml-[2.375rem] mt-1 h-1 overflow-hidden rounded-full bg-ink-800">
                   {has && <div className="h-full rounded-full" style={{ width: `${barPct(r.value)}%`, background: scale.color(r.value) }} />}
